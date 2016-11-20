@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 
 @end
 
@@ -17,6 +18,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    [_favoriteButton setImage:[[UIImage imageNamed:@"Heart"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
+    _favoriteButton.imageView.tintColor = [UIColor blackColor];
 }
 
 
@@ -25,5 +30,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)favoriteButtonAction:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    
+    if (sender.selected) {
+        _favoriteButton.imageView.tintColor = [UIColor redColor];
+    }
+    else {
+        _favoriteButton.imageView.tintColor = [UIColor blackColor];
+    }
+}
 
 @end
